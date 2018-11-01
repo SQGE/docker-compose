@@ -1,0 +1,20 @@
+version: '2'
+services:
+  namesrv:
+    image: coll/rocketmq-namesrv:4.2.0
+    container_name: namesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - ./data/namesrv/logs:/opt/logs
+      - ./data/namesrv/store:/opt/store
+  broker:
+    image: coll/rocketmq-broker:4.2.0 
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./data/broker/logs:/opt/logs
+      - ./data/broker/store:/opt/store
+    depends_on:
+      - namesrv
