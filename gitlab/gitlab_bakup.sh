@@ -1,7 +1,7 @@
 #!/bin/bash
 backdir=/data/gitlab/data/backups
 gitlab_back(){
-/usr/bin/docker exec -i gitlab_gitlab_1  /opt/gitlab/bin/gitlab-rake gitlab:backup:create
+/usr/bin/docker exec -i gitlab /opt/gitlab/bin/gitlab-rake gitlab:backup:create
 }
 
 delete_back(){
